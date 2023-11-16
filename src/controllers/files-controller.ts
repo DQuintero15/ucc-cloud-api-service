@@ -26,6 +26,7 @@ export class FilesController {
       }
       res.setHeader("Content-Type", "application/octet-stream")
       res.setHeader("Content-Disposition", `attachment; filename=${key}`)
+      res.attachment(key)
       res.status(200).send(file)
       return
     } catch (error) {

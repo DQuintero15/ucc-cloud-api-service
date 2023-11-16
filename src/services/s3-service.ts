@@ -62,11 +62,11 @@ export class S3Service {
       Key: key,
     }
     const command = new GetObjectCommand(params)
-    const { Body } = await this.s3.send(command)
-    if (!Body) {
+    const result = await this.s3.send(command)
+    if (!result.Body) {
       return null
     }
 
-    return await Body.transformToByteArray()
+    return await result.Body.transformToString()
   }
 }
